@@ -6,7 +6,7 @@ describe('GET /is_prime/:num', () => {
         const response = await request(app).get('/is_prime/17');
         expect(response.text).toEqual('true');
     });
-    it('true_when_x_is_36', async() => {
+    it('false_when_x_is_36', async() => {
         const response = await request(app).get('/is_prime/36');
         expect(response.text).toEqual('false');
     });
