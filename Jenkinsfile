@@ -45,18 +45,15 @@ pipeline{
                 sh 'docker push xavha/jenkins:lastest'
             }
         }
-        stage('Clear system'){
-            steps{
-                sh 'docker compose -f ./docker-compose.dev.yaml down && docker system prune -a -f'
-            }
-        }
-        stage('Pull image'){
-            agent{
-                label 'vm3'
-            }
-            steps{
-                sh 'docker compose down && docker system prune -a -f && docker compose up -d --build'
-            }
-        }
+        // stage('Clear system'){
+        //     steps{
+        //         sh 'docker compose -f ./docker-compose.dev.yaml down && docker system prune -a -f'
+        //     }
+        // }
+        // stage('Pull image'){
+        //     steps{
+        //         sh 'docker compose down && docker system prune -a -f && docker compose up -d --build'
+        //     }
+        // }
     }
 }
