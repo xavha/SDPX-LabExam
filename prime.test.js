@@ -1,17 +1,17 @@
-const app = require('./index')
-const request = require('supertest');
+const {is_prime , server} = require('./index');
 
-describe('GET /is_prime/:num', () => {
-    it('true_when_x_is_17', async() => {
-        const response = await request(app).get('/is_prime/17');
-        expect(response.text).toEqual('true');
+afterAll(done => {
+    server.close(done);
+});
+
+describe('test is prime', () => {
+    test('true_when_x_is_17',() => {
+        expect(is_prime(17)).toBe(true);
     });
-    it('false_when_x_is_36', async() => {
-        const response = await request(app).get('/is_prime/36');
-        expect(response.text).toEqual('false');
+    test('false_when_x_is_36',() => {
+        expect(is_prime(36)).toBe(false);
     });
-    it('true_when_x_is_13219', async() => {
-        const response = await request(app).get('/is_prime/17');
-        expect(response.text).toEqual('true');
+    test('true_when_x_is_13219',() => {
+        expect(is_prime(13219)).toBe(true);
     });
 });
